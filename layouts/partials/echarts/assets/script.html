@@ -1,0 +1,11 @@
+{{- if .Store.Get "hasECharts" }}
+  {{- $opts := dict
+    "targetPath" "js/echarts.js"
+    "minify" hugo.IsProduction
+  }}
+  {{- $js := resources.Get "mods/echarts/index.ts" | js.Build $opts }}
+  {{- if hugo.IsProduction }}
+    {{- $js = $js | fingerprint }}
+  {{- end }}
+  <script src="{{ $js.RelPermalink }}"></script>
+{{- end }}

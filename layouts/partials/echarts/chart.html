@@ -1,0 +1,40 @@
+{{- $echarts := site.Params.echarts }}
+{{- $params := .params }}
+{{- $options := jsonify .options }}
+{{- $attrs := newScratch }}
+{{- $attrs.Set "id" (printf "echarts-%s-%d" .caller .ordinal) }}
+{{- $attrs.Set "class" "echarts" }}
+{{- range $k, $v := $params }}
+  {{- if in (slice "height" "width") $k }}
+    {{- continue }}
+  {{- end }}
+  {{- if eq $k "class" }}
+    {{- $v = printf "echarts %s" $v }}
+  {{- end }}
+  {{- $attrs.Set $k $v }}
+{{- end }}
+{{- $style := slice }}
+{{- range slice "height" "width" }}
+  {{- $key := . }}
+  {{- $val := default "" (index $echarts $key) | string }}
+  {{- with index $params $key }}
+    {{- $val = string . }}
+  {{- end }}
+  {{- if $val }}
+    {{- if not (strings.Contains $val "%") }}
+      {{- $val = printf "%spx" $val }}
+    {{- end }}
+    {{- $style = $style | append (printf "%s: %s" $key $val) }}
+  {{- end }}
+{{- end }}
+{{- with $style }}
+  {{- $attrs.Set "style" (delimit . `; `) }}
+{{- end }}
+{{- $attrsSlice := slice }}
+{{- range $k, $v := $attrs.Values }}
+  {{- $attrsSlice = $attrsSlice | append (printf `%s="%s"` $k $v) }}
+{{- end }}
+<div
+  {{ delimit $attrsSlice " " | safeHTMLAttr }}
+  data-options="{{ $options }}">
+</div>

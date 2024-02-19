@@ -1,0 +1,19 @@
+{{- .Page.Store.Set "hasECharts" true -}}
+{{- $options := dict }}
+{{- with .Inner }}
+  {{- $options = transform.Unmarshal . }}
+{{- else }}
+  {{- $data := .Get "data" }}
+  {{- with partial "base/functions/data" (dict "key" $data "page" .Page) }}
+    {{- $options = . }}
+  {{- else }}
+    {{- errorf "[echarts] no such data file: %s." $data }}
+  {{- end }}
+{{- end }}
+{{- $ctx := dict
+  "caller" "shortcode"
+  "ordinal" .Ordinal
+  "options" $options
+  "params" (cond (not .Params) dict .Params)
+}}
+{{- partial "echarts/chart" $ctx }}
