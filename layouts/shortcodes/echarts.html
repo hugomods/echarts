@@ -1,11 +1,27 @@
 {{- .Page.Store.Set "hasECharts" true -}}
 {{- $options := dict }}
-{{- with .Inner }}
-  {{- $options = transform.Unmarshal . }}
+{{- $js := default false (.Get "_js") }}
+{{- if .Inner }}
+  {{- $options = .Inner }}
+  {{- if not $js }}
+    {{- $options = transform.Unmarshal $options | jsonify }}
+  {{- end }}
+{{- else if $js }}
+  {{- $jsFile := .Get "_jsFile" }}
+  {{- with .Page.Resources.Get $jsFile }}
+    {{- $options = .Content }}
+  {{- else }}
+    {{- with resources.Get $jsFile }}
+      {{- $options = .Content }}
+    {{- end }}
+  {{- end }}
+  {{- if not $options }}
+    {{- errorf "[echarts] no such js file: %s." $jsFile }}
+  {{- end }}
 {{- else }}
   {{- $data := .Get "data" }}
   {{- with partial "base/functions/data" (dict "key" $data "page" .Page) }}
-    {{- $options = . }}
+    {{- $options = jsonify . }}
   {{- else }}
     {{- errorf "[echarts] no such data file: %s." $data }}
   {{- end }}
@@ -13,6 +29,7 @@
 {{- $ctx := dict
   "caller" "shortcode"
   "ordinal" .Ordinal
+  "js" $js
   "options" $options
   "params" (cond (not .Params) dict .Params)
 }}

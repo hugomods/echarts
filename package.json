@@ -23,5 +23,10 @@
     "lint": "npm run eslint",
     "eslint": "ts-standard",
     "stylelint": "npx stylelint \"**/*.scss\""
+  },
+  "ts-standard": {
+    "ignore": [
+      "assets/mods/echarts/js-vars.js"
+    ]
   }
 }
