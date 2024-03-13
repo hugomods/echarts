@@ -1,10 +1,16 @@
 {{- $echarts := site.Params.echarts }}
 {{- $params := .params }}
-{{- $options := jsonify .options }}
+{{- $options := .options }}
+{{- $js := .js }}
 {{- $attrs := newScratch }}
-{{- $attrs.Set "id" (printf "echarts-%s-%d" .caller .ordinal) }}
+{{- $id := printf "echarts-%s-%d" .caller .ordinal }}
+{{- $jsVar := replace $id "-" "_" | printf "%s_options" }}
+{{- $attrs.Set "id" $id }}
 {{- $attrs.Set "class" "echarts" }}
 {{- range $k, $v := $params }}
+  {{- if strings.HasPrefix $k "_" }}
+    {{- continue }}
+  {{- end }}
   {{- if in (slice "height" "width") $k }}
     {{- continue }}
   {{- end }}
@@ -36,5 +42,9 @@
 {{- end }}
 <div
   {{ delimit $attrsSlice " " | safeHTMLAttr }}
-  data-options="{{ $options }}">
+  {{ if not $js }}data-echarts-options="{{ $options }}"{{ end }}
+  {{ if $js }}data-echarts-options-var="{{ $jsVar }}"{{ end }}>
 </div>
+{{- if $js }}
+  {{- page.Store.SetInMap "eChartsJSVars" $jsVar $options }}
+{{- end }}

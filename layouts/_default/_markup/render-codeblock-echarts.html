@@ -1,9 +1,15 @@
 {{- .Page.Store.Set "hasECharts" true -}}
 {{- $attrs := .Attributes }}
+{{- $js := default false $attrs._js }}
+{{- $options := .Inner }}
+{{- if not $js }}
+  {{- $options = $options | transform.Unmarshal | jsonify }}
+{{- end }}
 {{- $ctx := dict
   "caller" "codeblock"
   "ordinal" .Ordinal
-  "options" (.Inner | transform.Unmarshal)
+  "js" $js
+  "options" $options
   "params" $attrs
 }}
 {{- partial "echarts/chart" $ctx }}
