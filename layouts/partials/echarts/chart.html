@@ -9,7 +9,6 @@
   {{- $id = printf "echarts-%s-%d" .caller $ordinal }}
 {{- end }}
 {{- $jsVar := replace $id "-" "_" | printf "%s_options" }}
-{{- warnf "%s" $jsVar }}
 {{- $attrs.Set "id" $id }}
 {{- $attrs.Set "class" "echarts" }}
 {{- range $k, $v := $params }}

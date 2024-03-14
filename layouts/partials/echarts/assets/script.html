@@ -16,7 +16,8 @@
     | resources.ExecuteAsTemplate $jsVarsPath .
     | js.Build (dict "targetPath" $jsVarsPath "minify" hugo.IsProduction)
   }}
-  <script>
-    {{ $jsVars.Content | safeJS }}
-  </script>
+  {{- if hugo.IsProduction }}
+    {{- $jsVars = $jsVars | fingerprint }}
+  {{- end }}
+  <script src="{{ $jsVars.RelPermalink }}"></script>
 {{- end }}
