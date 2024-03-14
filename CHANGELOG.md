@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.3](https://github.com/hugomods/echarts/compare/v0.1.2...v0.1.3) (2024-03-14)
+
+
+### Bug Fixes 🐞
+
+* JS vars path ([#8](https://github.com/hugomods/echarts/issues/8)) ([2f154bb](https://github.com/hugomods/echarts/commit/2f154bb97c652b9c85e6344afc0f6e5c96a55b97))
+
 ## [0.1.2](https://github.com/hugomods/echarts/compare/v0.1.1...v0.1.2) (2024-03-14)
 
 
