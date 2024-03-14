@@ -6,6 +6,7 @@
   {{- $options = $options | transform.Unmarshal | jsonify }}
 {{- end }}
 {{- $ctx := dict
+  "page" .Page
   "caller" "codeblock"
   "ordinal" .Ordinal
   "js" $js
