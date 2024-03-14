@@ -3,7 +3,8 @@
 {{- $options := .options }}
 {{- $js := .js }}
 {{- $attrs := newScratch }}
-{{- $id := printf "echarts-%s-%d" .caller .ordinal }}
+{{- $ordinal := add now.UnixMicro .ordinal }}
+{{- $id := printf "echarts-%s-%d" .caller $ordinal }}
 {{- $jsVar := replace $id "-" "_" | printf "%s_options" }}
 {{- $attrs.Set "id" $id }}
 {{- $attrs.Set "class" "echarts" }}
