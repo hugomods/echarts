@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.2](https://github.com/hugomods/echarts/compare/v0.1.1...v0.1.2) (2024-03-14)
+
+
+### Bug Fixes 🐞
+
+* the unique id for chart container ([ac3b835](https://github.com/hugomods/echarts/commit/ac3b8354a7d3584b948a8833bc7187c0d504dd12))
+
 ## [0.1.1](https://github.com/hugomods/echarts/compare/v0.1.0...v0.1.1) (2024-03-14)
 
 
