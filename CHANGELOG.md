@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.1](https://github.com/hugomods/echarts/compare/v0.1.0...v0.1.1) (2024-03-14)
+
+
+### Bug Fixes 🐞
+
+* change JS variables filename ([78ed425](https://github.com/hugomods/echarts/commit/78ed425c3c52cb5e09912438c05a62d66198cff1))
+
 ## [0.1.0](https://github.com/hugomods/echarts/compare/v0.0.1...v0.1.0) (2024-03-14)
 
 
