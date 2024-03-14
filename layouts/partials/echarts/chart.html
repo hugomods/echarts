@@ -1,4 +1,5 @@
 {{- $echarts := site.Params.echarts }}
+{{- $page := .page }}
 {{- $params := .params }}
 {{- $options := .options }}
 {{- $js := .js }}
@@ -50,5 +51,5 @@
   {{ if $js }}data-echarts-options-var="{{ $jsVar }}"{{ end }}>
 </div>
 {{- if $js }}
-  {{- page.Store.SetInMap "eChartsJSVars" $jsVar $options }}
+  {{- $page.Store.SetInMap "eChartsJSVars" $jsVar $options }}
 {{- end }}
