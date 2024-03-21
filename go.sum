@@ -2,3 +2,4 @@ github.com/hugomods/apache-echarts v5.5.0+incompatible h1:qiZR+Zg5wVbcqJQ56bVm/J
 github.com/hugomods/apache-echarts v5.5.0+incompatible/go.mod h1:RbEQGbCh0enpgPXOQK4E69LhmHsU91qsbOmMfwMYTEQ=
 github.com/hugomods/base v0.5.0 h1:++wQcEVJLft6sP9n8O7YhGEQRgwYiVX5hJeeqeLCEjc=
 github.com/hugomods/base v0.5.0/go.mod h1:hnWCPbVxuhXBwdFax3mmbMlWKmIo/7OP36MCLOyHtT4=
+github.com/hugomods/base v0.6.0/go.mod h1:hnWCPbVxuhXBwdFax3mmbMlWKmIo/7OP36MCLOyHtT4=
