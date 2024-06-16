@@ -4,5 +4,5 @@ go 1.18
 
 require (
 	github.com/hugomods/apache-echarts v5.5.0+incompatible // indirect
-	github.com/hugomods/base v0.7.1 // indirect
+	github.com/hugomods/base v0.7.2 // indirect
 )
