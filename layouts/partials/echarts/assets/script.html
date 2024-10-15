@@ -10,14 +10,12 @@
   <script src="{{ $js.RelPermalink }}"></script>
 {{- end }}
 {{- with .Store.Get "eChartsJSVars" }}
+  {{- $hash := jsonify . | md5 }}
   {{- $jsVars := resources.Get "mods/echarts/js-vars.js" }}
-  {{- $jsVarsPath := printf "%s/echarts-vars.js" page.RelPermalink }}
+  {{- $jsVarsPath := printf "%s/echarts-vars.%s.js" page.RelPermalink $hash }}
   {{- $jsVars = $jsVars
     | resources.ExecuteAsTemplate $jsVarsPath .
     | js.Build (dict "targetPath" $jsVarsPath "minify" hugo.IsProduction)
   }}
-  {{- if hugo.IsProduction }}
-    {{- $jsVars = $jsVars | fingerprint }}
-  {{- end }}
   <script src="{{ $jsVars.RelPermalink }}"></script>
 {{- end }}
