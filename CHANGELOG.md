@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.4](https://github.com/hugomods/echarts/compare/v0.1.3...v0.1.4) (2024-10-15)
+
+
+### Bug Fixes 🐞
+
+* append hash into the JavaScript variables file ([#53](https://github.com/hugomods/echarts/issues/53)) ([55d2ae7](https://github.com/hugomods/echarts/commit/55d2ae70bfda9d03caa96cb6a7119900539039f9))
+
 ## [0.1.3](https://github.com/hugomods/echarts/compare/v0.1.2...v0.1.3) (2024-03-14)
 
 
