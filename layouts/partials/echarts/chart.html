@@ -41,6 +41,10 @@
 {{- with $style }}
   {{- $attrs.Set "style" (delimit . `; `) }}
 {{- end }}
+{{- $renderer := default "" (index $echarts "renderer") }}
+{{- with index $params "renderer" }}
+  {{- $renderer = . }}
+{{- end }}
 {{- $attrsSlice := slice }}
 {{- range $k, $v := $attrs.Values }}
   {{- $attrsSlice = $attrsSlice | append (printf `%s="%s"` $k $v) }}
@@ -48,7 +52,8 @@
 <div
   {{ delimit $attrsSlice " " | safeHTMLAttr }}
   {{ if not $js }}data-echarts-options="{{ $options }}"{{ end }}
-  {{ if $js }}data-echarts-options-var="{{ $jsVar }}"{{ end }}>
+  {{ if $js }}data-echarts-options-var="{{ $jsVar }}"{{ end }}
+  {{ with $renderer }}data-echarts-renderer="{{ . }}"{{ end }}>
 </div>
 {{- if $js }}
   {{- $page.Store.SetInMap "eChartsJSVars" $jsVar $options }}
