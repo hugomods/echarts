@@ -23,7 +23,9 @@ declare global {
       } else {
         option = JSON.parse(ele.getAttribute('data-echarts-options') ?? '{}')
       }
-      echarts.init(ele).setOption(option)
+      const renderer = ele.getAttribute('data-echarts-renderer')
+      const initOpts = renderer ? { renderer: renderer } : {}
+      echarts.init(ele, null, initOpts).setOption(option)
       ele.classList.remove('initializing')
       ele.classList.add('initialized')
       resolve(true)
