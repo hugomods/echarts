@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0](https://github.com/hugomods/echarts/compare/v0.1.4...v0.2.0) (2025-12-27)
+
+
+### Features ✨
+
+* pass renderer shortcut param to init options ([#117](https://github.com/hugomods/echarts/issues/117)) ([b069ccb](https://github.com/hugomods/echarts/commit/b069ccbf475c1873fbc516847e145cdd26ed8a57))
+
 ## [0.1.4](https://github.com/hugomods/echarts/compare/v0.1.3...v0.1.4) (2024-10-15)
 
 
